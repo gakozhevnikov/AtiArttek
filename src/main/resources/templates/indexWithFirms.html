@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org
+http://thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Arttek Ati Firm</title>
+
+</head>
+<body>
+
+<form method="get" th:action="@{/arttekati}">
+    <label>
+        <input type="text" th:value="${id}" name="id">
+    </label>
+    <input type="submit">
+</form>
+
+<h1>Arttek Ati Firm</h1>
+
+<table>
+    <tr>
+        <td>Код в АТИ.</td>
+        <td th:utext="${firm.atiId}"></td>
+    </tr>
+    <tr>
+        <td>Название фирмы</td>
+        <td th:utext="${firm.firmName}"></td>
+    </tr>
+    <tr>
+        <td>Собственность</td>
+        <td th:utext="${firm.ownership}"></td>
+    </tr>
+    <tr>
+        <td>Полное наименование</td>
+        <td th:utext="${firm.fullName}"></td>
+    </tr>
+    <tr>
+        <td>Вид деятельности</td>
+        <td th:utext="${firm.firmType}"></td>
+    </tr>
+    <tr>
+        <td>Полное наименование места расположения</td>
+        <td th:utext="${firm.location.fullName}"></td>
+    </tr>
+    <tr>
+        <td>Документы фирмы</td>
+    </tr>
+    <tr th:each = "firmDocuments : ${firm.firmDocuments}">
+        <td>Наименование</td>
+        <td th:utext="${firmDocuments.description}"></td>
+        <td>Ссылка</td>
+        <td>
+            <a th:href="${firmDocuments.link}">Открыть</a>
+            <!--<a href="#" data-th-href="@{firmDocuments.link}">Открыть</a>-->
+        </td>
+    </tr>
+
+</table>
+
+
+</body>
+</html>
